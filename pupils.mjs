@@ -23,8 +23,8 @@ export class Pupils {
             throw new TypeError('last name should be a string');
         if (data.dateOfBirth && typeof data.dateOfBirth !== 'string')
             throw new TypeError('date of birth should be a date string');
-        else if (/^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(0[1-9]|1[1-9]|2[1-9])$/.test(data.dateOfBirth)) 
-            throw new Error('string should have a date format');
+        // else if (!/^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(0[1-9]|1[1-9]|2[1-9])$/g.test(data.dateOfBirth)) 
+        //     throw new Error('string should have a date format');
         if (!Array.isArray(data.phones)) throw new TypeError ('phones should be an array');
         else {
             for (let i=0; i<data.phones.length; i++){
@@ -46,7 +46,7 @@ export class Pupils {
     }
 
     #IDvalidation (id) {
-        if (typeof id !== 'string' || !this.#teachersDATA.has(id)) 
+        if (typeof id !== 'string' || !this.#pupilsDATA.has(id)) 
             throw new TypeError('invalid teacher id');
     }
 

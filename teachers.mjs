@@ -25,8 +25,8 @@ export class Teachers {
             throw new TypeError('last name should be a string');
         if (data.dateOfBirth && typeof data.dateOfBirth !== 'string')
             throw new TypeError('date of birth should be a date string');
-        else if (/^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(0[1-9]|1[1-9]|2[1-9])$/.test(data.dateOfBirth)) 
-            throw new Error('string should have a date format');
+        // else if (/^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(0[1-9]|1[1-9]|2[1-9])$/.test(data.dateOfBirth)) 
+        //     throw new Error('string should have a date format');
         if (!Array.isArray(data.emails)) throw new TypeError ('emails should be an array');
         else {
             for (let i=0; i<data.emails.length; i++){

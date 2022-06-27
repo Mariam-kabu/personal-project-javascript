@@ -2,7 +2,7 @@ import { Subject } from "./subject.mjs";
 import { LMS } from "./LMS.mjs";
 import { Teachers } from "./teachers.mjs";
 import { Pupils } from "./pupils.mjs";
-
+import { Groups } from "./groups.mjs";
 
 //subject 
 
@@ -63,9 +63,9 @@ const data = {
     ],
     "description": "string",
 };
-// let validDate = /^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/;
+let validDate = /^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/;
 // console.log(validDate.test(data.dateOfBirth));
-// // console.log(isNaN(Date.parse(data.dateOfBirth)));
+// console.log(isNaN(Date.parse(data.dateOfBirth)));
 
 const updatedProfile = {
     "name": {
@@ -100,20 +100,61 @@ const pupil = {
       "first": "string",
       "last": "string"
     },
-    "dateOfBirth": "string", // format date
+    "dateOfBirth": "05/12/2003", // format date
     "phones": [
       {
         "phone": "string",
-        "primary": "boolean"
+        "primary": true
       }
     ],
-    "sex": "string", // male OR female
+    "sex": "male", // male OR female
     "description": "string"
-  }
+  };
+
+  const pupil1 = {
+    "name": {
+      "first": "lana",
+      "last": "string"
+    },
+    "dateOfBirth": "08/04/2003", // format date
+    "phones": [
+      {
+        "phone": "string",
+        "primary": true
+      }
+    ],
+    "sex": "female", // male OR female
+    "description": "string"
+  };
+
+
+  
 
 // Create new Pupil from Pupil's data
 const pupils = new Pupils();
 pupils.add(pupil);
+pupils.add(pupil1);
 // console.log(pupil.id);
-console.log(pupils.read(pupil.id));
+pupils.read(pupil.id);
+pupils.read(pupil1.id);
 // pupils.update(pupil.id, updatedPupil);
+
+
+// groups 
+const room = 236;
+const room1 = 17;
+const groups = new Groups();
+
+// returns groupId
+const groupId = groups.add(room);
+const groupId1 = groups.add(room1);
+// console.log(groupId);
+// console.log(groupId1);
+
+// Add this pupil to this group
+console.log(groups.addPupil(groupId, pupil));
+// console.log(groupId1);
+console.log(groups.addPupil(groupId, pupil1));
+
+// Remove this pupil from this group
+// groups.removePupil(groupId, pupil.id);
