@@ -45,16 +45,16 @@ const data = {
     "emails": [
         {
             "email": "string",
-            "primary": "boolean"
+            "primary": true            
         }
     ],
     "phones": [
         {
             "phone": "string",
-            "primary": "boolean"
+            "primary": true
         }
     ],
-    "sex": "string", // male or female
+    "sex": "male", // male or female
     "subjects": [
         {
             "subject": "string" // just name property of subject.
@@ -62,6 +62,34 @@ const data = {
     ],
     "description": "string",
 };
-const teacherId = teachers.add(data);
-// console.log(teacherId);
-console.log(teachers.read(teacherId));
+
+const updatedProfile = {
+    "name": {
+        "first": "maka",
+        "last": "abuladze"
+    },
+    "dateOfBirth": '20/12/1985', // format date
+    "emails": [
+        {
+            "email": "string",
+            "primary": true            
+        }
+    ],
+    "phones": [
+        {
+            "phone": "string",
+            "primary": true
+        }
+    ],
+    "sex": "female", // male or female
+    "subjects": [
+        {
+            "subject": "music" // just name property of subject.
+        }
+    ]
+};
+let teacherId = teachers.add(data);
+let otherteacherId = teachers.add(updatedProfile);
+// console.log(Object.getOwnPropertyNames(data).length)
+// console.log(teachers.read(otherteacherId));
+// teacherId = teachers.update(teacherId, updatedProfile);

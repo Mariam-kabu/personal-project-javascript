@@ -13,7 +13,7 @@ export class LMS {
             throw new TypeError('title should be a string');
         if (subject.lessons !== undefined && typeof subject.lessons !== 'number')
             throw new TypeError('lessons should be a number');
-        if (subject.hasOwnProperty('description') && typeof subject.description !== 'string')
+        if (subject.hasOwnProperty('description') && (typeof subject.description !== 'string' || Object.getOwnPropertyNames(subject).length !== 4))
             throw new TypeError('description should be a string');
 
     }       
