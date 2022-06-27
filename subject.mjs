@@ -8,7 +8,7 @@ export class Subject {
         this.lessons = lessons;
         this.description = description;
         if (this.title === undefined || this.lessons === undefined || typeof this.title !== 'string' || typeof this.lessons !== 'number' || typeof this.description !== 'string' && this.description !== undefined) 
-            throw new Error ('Invalid input');
+            throw new Error ('Invalid input in subject');
         else if(this.description === undefined) delete this.description;
     }
 };

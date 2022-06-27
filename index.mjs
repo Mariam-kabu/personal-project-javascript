@@ -15,11 +15,17 @@ const math = new Subject({
 });
 
 // console.log(history.id, math.id);
-
+const chess = {
+    id: 'jncb74',
+    title: 'Chess',
+    lessons: 24,
+    description: 'queen & king'
+};
 // lms
 const lms = new LMS();
 lms.add(history);
 lms.add(math);
+lms.add(chess);
 // console.log(history);
 // console.log(math);
 // lms.remove(history);
