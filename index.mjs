@@ -1,5 +1,6 @@
 import { Subject } from "./subject.mjs";
 import { LMS } from "./LMS.mjs";
+import { Teachers } from "./teachers.mjs";
 
 
 //subject 
@@ -15,12 +16,12 @@ const math = new Subject({
 });
 
 // console.log(history.id, math.id);
-const chess = {
-    id: 'jncb74',
+const chess = new Subject({
+    id: 'jb74-gyt6',
     title: 'Chess',
-    lessons: 24,
+    lessons: 14,
     description: 'queen & king'
-};
+});
 // lms
 const lms = new LMS();
 lms.add(history);
@@ -30,4 +31,37 @@ lms.add(chess);
 // console.log(math);
 // lms.remove(history);
 // console.log(lms.verify(history));
-lms.readAll();
+// lms.readAll();
+
+// teachers 
+const teachers = new Teachers();
+
+const data = {
+    "name": {
+        "first": "string",
+        "last": "string"
+    },
+    "dateOfBirth": "string", // format date
+    "emails": [
+        {
+            "email": "string",
+            "primary": "boolean"
+        }
+    ],
+    "phones": [
+        {
+            "phone": "string",
+            "primary": "boolean"
+        }
+    ],
+    "sex": "string", // male or female
+    "subjects": [
+        {
+            "subject": "string" // just name property of subject.
+        }
+    ],
+    "description": "string",
+};
+const teacherId = teachers.add(data);
+// console.log(teacherId);
+console.log(teachers.read(teacherId));

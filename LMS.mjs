@@ -1,6 +1,5 @@
 export class LMS {
     #lms = new Map();
-    #index = 0;
     #validateSubject (subject) {
         if (typeof subject !== 'object' || Array.isArray(subject) || subject === null)
             throw new  TypeError('Invalid param was passed, should be an object');
@@ -20,9 +19,8 @@ export class LMS {
     }       
     add (subject) {
         this.#validateSubject(subject);
-        const index = String(this.#index++);
-        this.#lms.set(index, subject);
-        return this.#lms;
+        this.#lms.set(subject.id, subject);
+        return subject.id;
     }
     remove (subject) {
         this.#validateSubject(subject);
