@@ -1,17 +1,15 @@
-export class Teachers {
+export class Pupils {
     #id = 0;
-    #teachersDATA = new Map();
+    #pupilsDATA = new Map();
     #dataValidation ( data) {
         if (typeof data !== 'object' || Array.isArray(data) || data === null)
             throw new  TypeError('Invalid param was passed, should be an object');
-        if (Object.getOwnPropertyNames(data).length !== 7 && Object.getOwnPropertyNames(data).length !== 6)
+        if (Object.getOwnPropertyNames(data).length !== 5 && Object.getOwnPropertyNames(data).length !== 4)
             throw new Error('incorrect amount of properties were passed');
         if (!data.hasOwnProperty('name') 
             || !data.hasOwnProperty('dateOfBirth') 
-            || !data.hasOwnProperty('emails') 
             || !data.hasOwnProperty('phones') 
-            || !data.hasOwnProperty('sex') 
-            || !data.hasOwnProperty('subjects'))
+            || !data.hasOwnProperty('sex'))
             throw new Error('required property is missing');
         if (typeof data.name !== 'object' || Array.isArray(data.name) || data.name === null)
             throw new Error('invalid tachers name');
@@ -27,20 +25,6 @@ export class Teachers {
             throw new TypeError('date of birth should be a date string');
         else if (/^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(0[1-9]|1[1-9]|2[1-9])$/.test(data.dateOfBirth)) 
             throw new Error('string should have a date format');
-        if (!Array.isArray(data.emails)) throw new TypeError ('emails should be an array');
-        else {
-            for (let i=0; i<data.emails.length; i++){
-                let param = data.emails[i];
-                if (typeof param !== 'object' || Array.isArray(param) || param === null)
-                    throw new TypeError('email array doesnt contain an object');
-                else if (!param.hasOwnProperty('email') || !param.hasOwnProperty('primary') || Object.getOwnPropertyNames(param).length !== 2)
-                    throw new Error ('invalid email properties');
-                else if (param.email && typeof param.email !== 'string')
-                    throw new Error('email should be a string');
-                else if (typeof param.primary !== 'boolean')
-                    throw new Error('primary should be boolean');
-            }
-        }
         if (!Array.isArray(data.phones)) throw new TypeError ('phones should be an array');
         else {
             for (let i=0; i<data.phones.length; i++){
@@ -57,19 +41,7 @@ export class Teachers {
         }
         if (data.sex && typeof data.sex !== 'string') throw new TypeError('sex should be a string');
         else if (data.sex !== 'male' && data.sex !== 'female') throw new Error('invalid sex');
-        if (!Array.isArray(data.subjects)) throw new TypeError ('subjects should be an array');
-        else {
-            for (let i=0; i<data.subjects.length; i++){
-                let param = data.subjects[i];
-                if (typeof param !== 'object' || Array.isArray(param) || param === null)
-                    throw new TypeError('subjects array doesnt contain an object');
-                else if (!param.hasOwnProperty('subject') || Object.getOwnPropertyNames(param).length !== 1)
-                    throw new Error ('invalid subject property');
-                else if (param.subject && typeof param.subject !== 'string')
-                    throw new Error('subject should be a string');
-            }
-        }
-        if (data.hasOwnProperty('description') && (typeof data.description !== 'string' || Object.getOwnPropertyNames(data).length !== 7))
+        if (data.hasOwnProperty('description') && (typeof data.description !== 'string' || Object.getOwnPropertyNames(data).length !== 5))
             throw new Error('invalid description');
     }
 
@@ -78,26 +50,25 @@ export class Teachers {
             throw new TypeError('invalid teacher id');
     }
 
-    add (teacherData) {
-        this.#dataValidation(teacherData);
+    add (pupilData) {
+        this.#dataValidation(pupilData);
         const id = String(this.#id++);
-        teacherData.id = id;
-        this.#teachersDATA.set(id, teacherData);
+        pupilData.id = id;
+        this.#pupilsDATA.set(id, pupilData);
         return id;
     }
-    read (teacherId) {
-        this.#IDvalidation(teacherId);
-        return this.#teachersDATA.get(teacherId);
+    read (pupilId) {
+        this.#IDvalidation(pupilId);
+        return this.#pupilsDATA.get(pupilId);
     }
-    update (teacherId, updatedProfile) {
-        this.#IDvalidation(teacherId);
+    update (pupilId, updatedProfile) {
+        this.#IDvalidation(pupilId);
         this.#dataValidation(updatedProfile);
-        this.#teachersDATA.set(teacherId, updatedProfile);
-        updatedProfile.id = teacherId;
-        return teacherId;
+        this.#pupilsDATA.set(pupilId, updatedProfile);
+        updatedProfile.id = pupilId;
+        return pupilId;
     }
-    remove (teacherId) {
-        this.#IDvalidation(teacherId);
-        this.#teachersDATA.delete(teacherId);
+    remove (pupilId) { 
+        this.#pupilsDATA.delete(pupilId);
     }
 }

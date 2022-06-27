@@ -1,6 +1,7 @@
 import { Subject } from "./subject.mjs";
 import { LMS } from "./LMS.mjs";
 import { Teachers } from "./teachers.mjs";
+import { Pupils } from "./pupils.mjs";
 
 
 //subject 
@@ -41,7 +42,7 @@ const data = {
         "first": "string",
         "last": "string"
     },
-    "dateOfBirth": "string", // format date
+    "dateOfBirth": "18/3/2002", // format date
     "emails": [
         {
             "email": "string",
@@ -62,6 +63,9 @@ const data = {
     ],
     "description": "string",
 };
+// let validDate = /^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/;
+// console.log(validDate.test(data.dateOfBirth));
+// // console.log(isNaN(Date.parse(data.dateOfBirth)));
 
 const updatedProfile = {
     "name": {
@@ -89,7 +93,27 @@ const updatedProfile = {
     ]
 };
 let teacherId = teachers.add(data);
-let otherteacherId = teachers.add(updatedProfile);
-// console.log(Object.getOwnPropertyNames(data).length)
-// console.log(teachers.read(otherteacherId));
-// teacherId = teachers.update(teacherId, updatedProfile);
+
+// pupil
+const pupil = {
+    "name": {
+      "first": "string",
+      "last": "string"
+    },
+    "dateOfBirth": "string", // format date
+    "phones": [
+      {
+        "phone": "string",
+        "primary": "boolean"
+      }
+    ],
+    "sex": "string", // male OR female
+    "description": "string"
+  }
+
+// Create new Pupil from Pupil's data
+const pupils = new Pupils();
+pupils.add(pupil);
+// console.log(pupil.id);
+console.log(pupils.read(pupil.id));
+// pupils.update(pupil.id, updatedPupil);
