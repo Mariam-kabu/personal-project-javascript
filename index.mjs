@@ -152,9 +152,9 @@ const groupId1 = groups.add(room1);
 // console.log(groupId1);
 
 // Add this pupil to this group
-console.log(groups.addPupil(groupId, pupil));
+groups.addPupil(groupId, pupil);
 // console.log(groupId1);
-console.log(groups.addPupil(groupId, pupil1));
+groups.addPupil(groupId, pupil1);
 
 // Remove this pupil from this group
-// groups.removePupil(groupId, pupil.id);
+groups.removePupil(groupId, pupil.id);
