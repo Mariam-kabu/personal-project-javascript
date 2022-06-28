@@ -64,7 +64,7 @@ const data = {
     ],
     "description": "string",
 };
-let validDate = /^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/;
+// let validDate = /^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/;
 // console.log(validDate.test(data.dateOfBirth));
 // console.log(isNaN(Date.parse(data.dateOfBirth)));
 
@@ -158,7 +158,7 @@ groups.addPupil(groupId, pupil);
 // groups.addPupil(groupId, pupil1);
 
 // Remove this pupil from this group
-groups.removePupil(groupId, pupil1.id);
+// groups.removePupil(groupId, pupil1.id);
 
 // Read information about group
 const group = groups.read(groupId);

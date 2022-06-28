@@ -6,6 +6,7 @@ export class Groups {
             throw new TypeError('invalid pupil id');
     }
     add (room) {
+        if (typeof room !== 'number' || isNaN(room)) throw new TypeError('invalid room param');
         const id = String(this.#id++);
         const val = {id: id, room: room};
         this.#groups.set(id, val)
