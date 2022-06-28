@@ -47,7 +47,7 @@ export class Pupils {
 
     #IDvalidation (id) {
         if (typeof id !== 'string' || !this.#pupilsDATA.has(id)) 
-            throw new TypeError('invalid teacher id');
+            throw new TypeError('invalid pupil id');
     }
 
     add (pupilData) {

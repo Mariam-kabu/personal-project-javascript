@@ -3,6 +3,7 @@ import { LMS } from "./LMS.mjs";
 import { Teachers } from "./teachers.mjs";
 import { Pupils } from "./pupils.mjs";
 import { Groups } from "./groups.mjs";
+import { Gradebooks } from "./gradebooks.mjs";
 
 //subject 
 
@@ -154,7 +155,34 @@ const groupId1 = groups.add(room1);
 // Add this pupil to this group
 groups.addPupil(groupId, pupil);
 // console.log(groupId1);
-groups.addPupil(groupId, pupil1);
+// groups.addPupil(groupId, pupil1);
 
 // Remove this pupil from this group
-groups.removePupil(groupId, pupil.id);
+groups.removePupil(groupId, pupil1.id);
+
+// Read information about group
+const group = groups.read(groupId);
+
+// It will return array of groups
+groups.readAll()
+
+
+// gradebooks
+const pupilId = pupil.id;
+// const teacherId = teacherId;
+const gradebooks = new Gradebooks(groups, teachers, lms);
+
+// Create a new gradebook.
+const gradebook = gradebooks.add(group.id);
+console.log(gradebook);
+
+const record = {
+    pupilId: pupilId,
+    teacherId: teacherId,
+    subjectId: history.id,
+    lesson: 1,
+    mark: 9
+  };
+
+  
+gradebooks.addRecord(groupId, record);
