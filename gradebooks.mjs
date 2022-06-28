@@ -30,12 +30,14 @@ export class Gradebooks {
         this.lms = lms;
     }
     add (groupId) {
-        const groupVal = this.groups
-        .find(({id}) => id === groupId);
+        const groupVal = this.groups;
+        let findGroup = Object.values(groupVal).find((obj) => {
+            return obj.id === groupId;
+        });
         const newGradebook = {
             gradebookId: groupId,
             groupId: groupId,
-            pupils: groupVal.pupils,
+            pupils: findGroup.pupils,
             records: []
         }
         this.#gradebooks.set(groupId, newGradebook);
